@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 静态工厂创建Bean -->
+    <bean id="chiness" class="com.liuwei.demo.factory.staticfactory.PersonFactory" factory-method="getPerson">
+        <constructor-arg name="nationality" value="CN"></constructor-arg>
+    </bean>
+    <bean id="american" class="com.liuwei.demo.factory.staticfactory.PersonFactory" factory-method="getPerson">
+        <constructor-arg name="nationality" value="US"></constructor-arg>
+    </bean>
+
+    <!-- 实例工厂创建Bean，先定义工厂Bean -->
+    <bean id="animalfactory" class="com.liuwei.demo.factory.instanctfactory.AnimalFactory"></bean>
+    <bean id="dog" factory-bean="animalfactory" factory-method="getAnimal">
+        <constructor-arg name="name" value="dog"></constructor-arg>
+    </bean>
+</beans>

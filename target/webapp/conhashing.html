@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>consistent hasing</title>
+</head>
+<body>
+<!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+<canvas id="myCanvas" width="400px" height="300px" style="border: 1px solid red;">
+    您的浏览器不支持canvas标签。
+</canvas>
+</body>
+<script language="JavaScript">
+    //获取Canvas对象(画布)
+    var canvas = document.getElementById("myCanvas");
+    //简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+    if (canvas.getContext) {
+        //获取对应的CanvasRenderingContext2D对象(画笔)
+        var ctx = canvas.getContext("2d");
+        var cycle = 2 * Math.PI;
+        //开始一个新的绘制路径
+        ctx.beginPath();
+        //设置弧线的颜色为蓝色
+        ctx.strokeStyle = "#cfffb3";
+        ctx.lineWidth = 6;
+        ctx.solid = true;
+        var circle = {
+            x: 200,	//圆心的x轴坐标值
+            y: 150,	//圆心的y轴坐标值
+            r: 100		//圆的半径
+        };
+        //沿着坐标点顺时针方向绘制弧线
+        ctx.arc(circle.x, circle.y, circle.r, 0, cycle/3, false);
+        ctx.stroke();
+        ctx.closePath();
+
+        //开始一个新的绘制路径
+        ctx.beginPath();
+        ctx.strokeStyle = "#6aa8ff";
+        ctx.arc(circle.x, circle.y, circle.r, cycle/3, 2*cycle/3, false);
+        ctx.stroke();
+        ctx.closePath();
+
+        //开始一个新的绘制路径
+        ctx.beginPath();
+        ctx.strokeStyle = "#ff9063";
+        ctx.arc(circle.x, circle.y, circle.r, 2*cycle/3, cycle, false);
+        //按照指定的路径绘制弧线
+        ctx.stroke();
+    }
+
+</script>
+</html>
